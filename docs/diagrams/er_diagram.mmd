@@ -1,0 +1,57 @@
+
+erDiagram
+    STG_CLIENTE ||--o{ STG_PEDIDO : "faz"
+    STG_PEDIDO ||--o{ STG_ITEM_PEDIDO : "contém"
+    STG_ITEM_PEDIDO }o--|| STG_PRODUTO : "é"
+    DIM_CLIENTE ||--o{ FACT_VENDAS : "tem"
+    DIM_PRODUTO ||--o{ FACT_VENDAS : "tem"
+    DIM_TEMPO ||--o{ FACT_VENDAS : "tem"
+    
+    STG_CLIENTE {
+        INTEGER cliente_id PK
+        TEXT cpf
+        TEXT nome
+        TEXT email
+    }
+    STG_PRODUTO {
+        INTEGER produto_id PK
+        TEXT nome
+        TEXT categoria
+        REAL preco
+    }
+    STG_PEDIDO {
+        INTEGER pedido_id PK
+        INTEGER cliente_id FK
+        DATETIME data_pedido
+        TEXT status
+        REAL valor_total
+    }
+    STG_ITEM_PEDIDO {
+        INTEGER item_pedido_id PK
+        INTEGER pedido_id FK
+        INTEGER produto_id FK
+        INTEGER quantidade
+        REAL valor_unitario
+        REAL desconto
+    }
+    DIM_CLIENTE {
+        INTEGER cliente_id PK
+        TEXT nome
+    }
+    DIM_PRODUTO {
+        INTEGER produto_id PK
+        TEXT nome
+    }
+    DIM_TEMPO {
+        INTEGER tempo_id PK
+        DATE data
+    }
+    FACT_VENDAS {
+        INTEGER venda_id PK
+        INTEGER tempo_id FK
+        INTEGER pedido_id
+        INTEGER cliente_id FK
+        INTEGER produto_id FK
+        INTEGER quantidade
+        REAL valor_total
+    }
