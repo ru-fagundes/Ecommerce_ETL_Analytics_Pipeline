@@ -262,4 +262,4 @@ python scripts/verificar_database.py
 
 ---
 
-✨ **Obrigado por usar este projeto!** ✨
+✨ **Se este projeto te ajudou dê uma estrela!** ✨

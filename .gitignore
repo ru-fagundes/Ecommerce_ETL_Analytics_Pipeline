@@ -1,53 +1,96 @@
-# Python
+# ===== Python =====
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+*.egg
+*.egg-info/
 .Python
 build/
 develop-eggs/
 dist/
 downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.manifest
+*.spec
 
-# Virtual environments  
+# ===== Virtual Environments =====
 venv/
 .venv/
 env/
 .env
+ENV/
+env.bak/
+venv.bak/
 
-# Jupyter Notebook
+# ===== Jupyter Notebook =====
 .ipynb_checkpoints
+*/.ipynb_checkpoints/*
+*.ipynb_checkpoints
 
-# VS Code
+# ===== IDEs =====
 .vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
 
-# Database (mantenha uma cópia local)
-# ecommerce_sqlite.db
+# ===== Database =====
+# Uncomment to ignore database file
+# *.db
+# *.sqlite
+# *.sqlite3
+ecommerce_sqlite.db
 
-# Logs
+# ===== Logs =====
 *.log
+logs/
+*.log.*
 
-# Temporary files
+# ===== Temporary files =====
 .tmp/
 tmp/
+*.tmp
+*.bak
+*.cache
 
-# OS specific
+# ===== OS Specific =====
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+desktop.ini
 
-# Dashboard removido - não versionar se recriar
-dashboard/
-requirements.txt
-config.py
-utils.py
-run_dashboard.py
-*.bat
-COMO_EXECUTAR.md
-DASHBOARD_IMPLEMENTADO.md
-.streamlit/
-eggs/
-.eggs/
-lib/
+# ===== Data Files (optional) =====
+# Uncomment if you don't want to version data
+# data/processed/*
+# data/raw/*
+# !data/raw/.gitkeep
+# !data/processed/.gitkeep
+
+# ===== Coverage & Testing =====
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+.hypothesis/
+
+# ===== Distribution =====
+*.whl
 lib64/
 parts/
 sdist/
