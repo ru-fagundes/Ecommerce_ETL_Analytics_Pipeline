@@ -11,12 +11,6 @@
 > **Complete end-to-end ETL pipeline** | E-commerce Data Analytics | Python & SQL  
 > **Pipeline ETL completo** | Análise de Dados de E-commerce | Python & SQL
 
-[🇺🇸 English](#english) | [🇧🇷 Português](#português)
-
----
-
-## <a name="português"></a>🇧🇷 Português
-
 Sistema completo de **ETL (Extract, Transform, Load)** e análise de dados para e-commerce, processando vendas, clientes e produtos. Inclui pipeline automatizado, análises interativas em Jupyter e queries SQL otimizadas.
 
 ### ✨ Key Features
@@ -211,28 +205,6 @@ Contribuições são bem-vindas! Sinta-se à vontade para:
 
 ---
 
-## 📝 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-## 👤 Autor
-
-**Rubia Fagundes**
-
-- GitHub: [@ru-fagundes](https://github.com/ru-fagundes)
-- LinkedIn: [Rubia Fagundes](https://www.linkedin.com/in/rubiafagundes)
-- Email: rubiafagundes_ds@outlook.com
-
----
-
-## ⭐ Dê uma estrela!
-
-Se este projeto foi útil para você, considere dar uma ⭐ no repositório!
-
----
-
 ## 🎯 Casos de Uso
 
 ### 1. Análise de Vendas
@@ -304,20 +276,17 @@ Contribuições são bem-vindas! Para contribuir:
 
 ## 👤 Autor
 
-**Rubia Fagundes**  
-Projeto de Análise de Dados e ETL para E-commerce
+**Rubia Fagundes**
+
+- GitHub: [@ru-fagundes](https://github.com/ru-fagundes)
+- LinkedIn: [Rubia Fagundes](https://www.linkedin.com/in/rubiafagundes)
+- Email: rubiafagundes_ds@outlook.com
 
 ---
 
 ## 📝 Licença
 
 Este projeto é de código aberto para fins educacionais e de aprendizado.
-
----
-
-## 📧 Contato
-
-Para dúvidas ou sugestões, abra uma issue no GitHub.
 
 ---
 
