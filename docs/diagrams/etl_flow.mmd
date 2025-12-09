@@ -1,0 +1,50 @@
+```mermaid
+sequenceDiagram
+    participant CSV as 📂 CSV Files
+    participant PY as 🐍 Python ETL
+    participant STG as 📦 Staging
+    participant DW as 🗄️ Data Warehouse
+    participant ANALYTICS as 📊 Analytics
+    
+    Note over CSV,ANALYTICS: PIPELINE ETL - E-COMMERCE
+    
+    rect rgb(225, 245, 255)
+        Note over CSV,STG: FASE 1: EXTRACT
+        CSV->>PY: Ler clientes.csv
+        CSV->>PY: Ler produtos.csv
+        CSV->>PY: Ler pedidos.csv
+        CSV->>PY: Ler item_pedido.csv
+        PY->>STG: Carregar stg_cliente
+        PY->>STG: Carregar stg_produto
+        PY->>STG: Carregar stg_pedido
+        PY->>STG: Carregar stg_item_pedido
+    end
+    
+    rect rgb(255, 243, 224)
+        Note over STG,DW: FASE 2: TRANSFORM
+        STG->>PY: Validar dados
+        PY->>PY: Limpar duplicatas
+        PY->>PY: Tratar valores nulos
+        PY->>PY: Calcular métricas
+        PY->>PY: Criar dimensões
+    end
+    
+    rect rgb(200, 230, 201)
+        Note over PY,DW: FASE 3: LOAD
+        PY->>DW: Criar dim_cliente
+        PY->>DW: Criar dim_produto
+        PY->>DW: Criar dim_tempo
+        PY->>DW: Popular fato_vendas
+        DW-->>PY: Confirmar carga
+    end
+    
+    rect rgb(179, 157, 219)
+        Note over DW,ANALYTICS: FASE 4: ANALYZE
+        DW->>ANALYTICS: Executar queries
+        ANALYTICS->>ANALYTICS: Calcular KPIs
+        ANALYTICS->>ANALYTICS: Gerar visualizações
+        ANALYTICS->>ANALYTICS: Criar dashboards
+    end
+    
+    Note over CSV,ANALYTICS: ✅ Pipeline Concluído com Sucesso
+```

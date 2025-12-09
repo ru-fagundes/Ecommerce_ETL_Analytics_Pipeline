@@ -1,26 +1,101 @@
 # 📚 Índice da Documentação - Sistema de Administração de Dados para E-commerce
 
-**Última atualização:** 16 de Outubro de 2025
+**Versão:** 2.0  
+**Última atualização:** 07 de Dezembro de 2025
 
 ---
 
 ## 📖 Documentos Disponíveis
 
-### 1. **README.md** - Visão Geral do Projeto
-**Tamanho:** ~120 linhas  
+### 1. **README.md** ⭐ - Documentação Principal Visual
+**Tamanho:** ~800 linhas  
 **Audiência:** Todos os usuários  
 **Conteúdo:**
-- Visão geral do projeto
-- Estrutura de pastas
-- Como executar (guia básico)
-- Funcionalidades principais
+- Visão geral completa do projeto
+- Diagramas de arquitetura do pipeline
+- Modelo dimensional (Star Schema)
+- Fluxo ETL detalhado
+- Exemplos de código Python
+- Queries SQL com resultados esperados
+- Screenshots do dashboard
+- Guia de instalação completo
+- Estrutura do projeto
 - Tecnologias utilizadas
+- Seção de dashboard interativo
 
 **📌 Leia primeiro se:** Você está conhecendo o projeto agora
 
 ---
 
-### 2. **GUIA_RAPIDO.md** - Manual Prático de Uso
+### 2. **QUICK_START.md** ⚡ - Guia de Início Rápido
+**Tamanho:** ~300 linhas  
+**Audiência:** Usuários que querem começar rapidamente  
+**Conteúdo:**
+- Instalação em 5 minutos
+- Comandos PowerShell passo a passo
+- Execução do pipeline ETL
+- Iniciar dashboard Streamlit
+- Abrir notebook Jupyter
+- Solução de problemas comuns
+- Dicas de uso
+- Próximos passos
+
+**📌 Leia primeiro se:** Você quer executar o projeto agora
+
+---
+
+### 3. **MELHORIAS.md** ✨ - Registro de Melhorias (Novo!)
+**Tamanho:** ~400 linhas  
+**Audiência:** Desenvolvedores e colaboradores  
+**Conteúdo:**
+- Lista completa de melhorias implementadas
+- README visual detalhado
+- Diagramas de arquitetura criados
+- Dashboard Streamlit completo
+- Gráficos variados no notebook
+- Novos arquivos de documentação
+- Estatísticas de implementação
+- Checklist de features
+- Próximas melhorias sugeridas
+
+**📌 Leia se:** Você quer entender o que mudou na versão 2.0
+
+---
+
+### 4. **docs/screenshots/README.md** 📸 - Guia de Screenshots (Novo!)
+**Tamanho:** ~250 linhas  
+**Audiência:** Desenvolvedores e documentadores  
+**Conteúdo:**
+- Como gerar screenshots do dashboard
+- Ferramentas recomendadas
+- Nomenclatura de arquivos
+- Checklist completo de capturas
+- Otimização de imagens
+- Exemplos de uso no README
+- Dicas de qualidade
+- Solução de problemas
+
+**📌 Leia se:** Você vai documentar visualmente o projeto
+
+---
+
+### 5. **RELATORIO_FINAL.md** - Relatório Completo do Projeto
+**Tamanho:** ~266 linhas  
+**Audiência:** Todos  
+**Conteúdo:**
+- Resumo da revisão
+- Código Python revisado
+- Notebook Jupyter validado
+- Database SQLite testado
+- Documentação completa
+- Estrutura organizada
+- Resultados dos testes
+
+**📌 Leia se:** Você quer ver o status final da revisão anterior
+
+---
+
+### 6. **GUIA_RAPIDO.md** (Antigo) - Manual Prático de Uso
 **Tamanho:** ~300 linhas  
 **Audiência:** Usuários que vão usar o sistema  
 **Conteúdo:**

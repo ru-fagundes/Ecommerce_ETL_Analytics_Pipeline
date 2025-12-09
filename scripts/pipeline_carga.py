@@ -85,8 +85,8 @@ def popular_dimensoes(conn):
     # dim_produto
     try:
         query_produto = """
-        INSERT OR REPLACE INTO dim_produto
-        SELECT produto_id, nome, categoria, preco, custo, estoque
+        INSERT OR REPLACE INTO dim_produto (produto_id, nome, categoria, preco)
+        SELECT produto_id, nome, categoria, preco
         FROM stg_produto
         """
         conn.execute(query_produto)
@@ -102,22 +102,59 @@ def popular_fato(conn):
     log("\n📊 Populando fato_vendas...")
     
     try:
+        # Primeiro popular dim_tempo
+        log("  📅 Populando dim_tempo...")
+        query_tempo = """
+        INSERT OR IGNORE INTO dim_tempo (data, dia, mes, trimestre, ano, dia_semana, fim_semana, nome_mes)
+        SELECT DISTINCT
+            DATE(data_pedido) as data,
+            CAST(strftime('%d', data_pedido) AS INTEGER) as dia,
+            CAST(strftime('%m', data_pedido) AS INTEGER) as mes,
+            CASE 
+                WHEN CAST(strftime('%m', data_pedido) AS INTEGER) <= 3 THEN 1
+                WHEN CAST(strftime('%m', data_pedido) AS INTEGER) <= 6 THEN 2
+                WHEN CAST(strftime('%m', data_pedido) AS INTEGER) <= 9 THEN 3
+                ELSE 4
+            END as trimestre,
+            CAST(strftime('%Y', data_pedido) AS INTEGER) as ano,
+            CASE CAST(strftime('%w', data_pedido) AS INTEGER)
+                WHEN 0 THEN 'Domingo'
+                WHEN 1 THEN 'Segunda'
+                WHEN 2 THEN 'Terça'
+                WHEN 3 THEN 'Quarta'
+                WHEN 4 THEN 'Quinta'
+                WHEN 5 THEN 'Sexta'
+                WHEN 6 THEN 'Sábado'
+            END as dia_semana,
+            CASE WHEN CAST(strftime('%w', data_pedido) AS INTEGER) IN (0, 6) THEN 1 ELSE 0 END as fim_semana,
+            CASE CAST(strftime('%m', data_pedido) AS INTEGER)
+                WHEN 1 THEN 'Janeiro' WHEN 2 THEN 'Fevereiro' WHEN 3 THEN 'Março'
+                WHEN 4 THEN 'Abril' WHEN 5 THEN 'Maio' WHEN 6 THEN 'Junho'
+                WHEN 7 THEN 'Julho' WHEN 8 THEN 'Agosto' WHEN 9 THEN 'Setembro'
+                WHEN 10 THEN 'Outubro' WHEN 11 THEN 'Novembro' WHEN 12 THEN 'Dezembro'
+            END as nome_mes
+        FROM stg_pedido
+        """
+        conn.execute(query_tempo)
+        tempo_count = conn.execute("SELECT COUNT(*) FROM dim_tempo").fetchone()[0]
+        log(f"    ✅ dim_tempo: {tempo_count} registros")
+        
+        # Agora popular fato_vendas
         query_fato = """
-        INSERT OR REPLACE INTO fato_vendas
+        INSERT OR REPLACE INTO fato_vendas (tempo_id, pedido_id, cliente_id, produto_id, quantidade, valor_unitario, valor_desconto, valor_total, custo_produto)
         SELECT 
-            ip.item_pedido_id,
+            dt.tempo_id,
             p.pedido_id,
             p.cliente_id,
             ip.produto_id,
-            CAST(strftime('%Y%m%d', p.data_pedido) AS INTEGER) as tempo_id,
             ip.quantidade,
             ip.valor_unitario,
-            ip.desconto,
-            (ip.quantidade * ip.valor_unitario - COALESCE(ip.desconto, 0)) as receita_liquida,
-            (ip.quantidade * ip.custo_produto) as custo_total,
-            (ip.quantidade * ip.valor_unitario - COALESCE(ip.desconto, 0) - ip.quantidade * ip.custo_produto) as margem
+            COALESCE(ip.desconto, 0) as valor_desconto,
+            (ip.quantidade * ip.valor_unitario - COALESCE(ip.desconto, 0)) as valor_total,
+            ip.custo_produto
         FROM stg_item_pedido ip
         JOIN stg_pedido p ON ip.pedido_id = p.pedido_id
+        JOIN dim_tempo dt ON DATE(p.data_pedido) = dt.data
         """
         conn.execute(query_fato)
         count = conn.execute("SELECT COUNT(*) FROM fato_vendas").fetchone()[0]

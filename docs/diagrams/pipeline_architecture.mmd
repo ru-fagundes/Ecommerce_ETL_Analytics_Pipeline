@@ -1,0 +1,77 @@
+```mermaid
+graph TB
+    subgraph "DATA SOURCES"
+        CSV1[📄 clientes.csv]
+        CSV2[📄 produtos.csv]
+        CSV3[📄 pedidos.csv]
+        CSV4[📄 item_pedido.csv]
+    end
+    
+    subgraph "STAGING LAYER"
+        STG1[stg_cliente]
+        STG2[stg_produto]
+        STG3[stg_pedido]
+        STG4[stg_item_pedido]
+    end
+    
+    subgraph "ETL PROCESS"
+        VALIDATE[🔍 Validação<br/>Limpeza<br/>Deduplicação]
+        TRANSFORM[🔄 Transformação<br/>Enriquecimento<br/>Cálculos]
+    end
+    
+    subgraph "DATA WAREHOUSE - Star Schema"
+        DIM1[⭐ dim_cliente<br/>cliente_id<br/>nome<br/>email<br/>cidade<br/>estado]
+        DIM2[⭐ dim_produto<br/>produto_id<br/>nome<br/>categoria<br/>preco]
+        DIM3[⭐ dim_tempo<br/>tempo_id<br/>data<br/>ano/mes/dia<br/>dia_semana]
+        FATO[💎 fato_vendas<br/>venda_id<br/>cliente_id FK<br/>produto_id FK<br/>tempo_id FK<br/>pedido_id<br/>quantidade<br/>valor_total]
+    end
+    
+    subgraph "ANALYTICS LAYER"
+        KPI[📊 KPIs<br/>Faturamento<br/>Ticket Médio<br/>Conversão]
+        REPORTS[📈 Reports<br/>Top Vendas<br/>Tendências<br/>Segmentação]
+        DASH[🎨 Dashboard<br/>Streamlit<br/>Plotly<br/>Interativo]
+    end
+    
+    CSV1 --> STG1
+    CSV2 --> STG2
+    CSV3 --> STG3
+    CSV4 --> STG4
+    
+    STG1 --> VALIDATE
+    STG2 --> VALIDATE
+    STG3 --> VALIDATE
+    STG4 --> VALIDATE
+    
+    VALIDATE --> TRANSFORM
+    
+    TRANSFORM --> DIM1
+    TRANSFORM --> DIM2
+    TRANSFORM --> DIM3
+    TRANSFORM --> FATO
+    
+    DIM1 --> FATO
+    DIM2 --> FATO
+    DIM3 --> FATO
+    
+    FATO --> KPI
+    FATO --> REPORTS
+    FATO --> DASH
+    
+    style CSV1 fill:#e1f5ff
+    style CSV2 fill:#e1f5ff
+    style CSV3 fill:#e1f5ff
+    style CSV4 fill:#e1f5ff
+    style STG1 fill:#fff3e0
+    style STG2 fill:#fff3e0
+    style STG3 fill:#fff3e0
+    style STG4 fill:#fff3e0
+    style VALIDATE fill:#ffe0b2
+    style TRANSFORM fill:#ffe0b2
+    style DIM1 fill:#c8e6c9
+    style DIM2 fill:#c8e6c9
+    style DIM3 fill:#c8e6c9
+    style FATO fill:#81c784
+    style KPI fill:#b39ddb
+    style REPORTS fill:#b39ddb
+    style DASH fill:#b39ddb
+```

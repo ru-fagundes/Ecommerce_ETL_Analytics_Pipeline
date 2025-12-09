@@ -13,6 +13,13 @@ ipykernel>=6.25.0
 # ===== Data Visualization =====
 matplotlib>=3.7.0
 seaborn>=0.12.0
+plotly>=5.10.0
+
+# ===== Dashboard & Web App =====
+streamlit>=1.20.0
+
+# ===== Excel Support =====
+openpyxl>=3.0.0
 
 # ===== Optional: Data Quality & Validation =====
 # great-expectations>=0.17.0
