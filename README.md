@@ -1,5 +1,7 @@
 # 🛒 E-commerce ETL Analytics Pipeline
 
+![Banner](images/banner.png)
+
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![SQLite](https://img.shields.io/badge/SQLite-3-green.svg)
 ![Pandas](https://img.shields.io/badge/Pandas-Latest-orange.svg)
